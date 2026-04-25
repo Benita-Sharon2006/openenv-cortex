@@ -118,6 +118,8 @@ class CortexObservation(BaseModel):
     open_incident_count: int
 
     # Meta
+    reward: float = 0.0
+    done: bool = False
     last_action_result: str
     cumulative_reward: float
     tool_hint: str
