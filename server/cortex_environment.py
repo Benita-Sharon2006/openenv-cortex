@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from openenv.core import Environment
 from openenv.core.client_types import StepResult
 
-from cortex_env.models import (
+from models import (
     AuditFlag,
     CEOQuestion,
     CortexAction,
