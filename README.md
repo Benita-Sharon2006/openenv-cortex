@@ -28,12 +28,12 @@ The agent manages **6 interconnected corporate systems** simultaneously:
 
 | System | What Can Go Wrong | Agent Tools |
 |---|---|---|
-| 📊 Data Operations | ETL pipelines break, rows go dark | `repair_pipeline` |
-| 👥 HR | Conflicts escalate, morale drops | `resolve_hr` |
-| 🎧 Customer Support | SLA timers count down, enterprise clients churn | `handle_ticket` |
-| 💰 Financial Audit | Fraud flags, budget overruns surface | `run_audit` |
-| 👔 CEO Dashboard | Executive needs briefings or trust erodes | `brief_ceo` |
-| 🚨 Incident Command | P1/P2 incidents age and cascade | `open_incident`, `close_incident`, `escalate` |
+| 📊 Data Operations | ETL pipelines break, rows go dark | repair_pipeline |
+| 👥 HR | Conflicts escalate, morale drops | resolve_hr |
+| 🎧 Customer Support | SLA timers count down, enterprise clients churn | handle_ticket |
+| 💰 Financial Audit | Fraud flags, budget overruns surface | run_audit |
+| 👔 CEO Dashboard | Executive needs briefings or trust erodes | brief_ceo |
+| 🚨 Incident Command | P1/P2 incidents age and cascade | open_incident, close_incident, escalate |
 
 ### Cascading Failures
 Broken pipelines automatically cascade to linked customer tickets. SLA timers tick every step. HR conflicts drain morale over time. The agent must learn *which fire to fight first.*
@@ -42,36 +42,45 @@ Broken pipelines automatically cascade to linked customer tickets. SLA timers ti
 
 ## 🎮 Reward Structure (8 dimensions)
 
+    Total Reward =
+      data_repair   x 0.20  +
+      customer_sat  x 0.20  +
+      hr_resolution x 0.15  +
+      compliance    x 0.15  +
+      financial     x 0.10  +
+      ceo_trust     x 0.10  +
+      incident_mgmt x 0.05  +
+      efficiency    x 0.05  -
+      sla_penalties - morale_penalty
+
 ---
 
 ## 🚀 Quick Start
 
-```python
-from cortex_env import CortexEnv, CortexAction
+    from cortex_env import CortexEnv, CortexAction
 
-async with CortexEnv(base_url="YOUR_HF_SPACE_URL") as env:
-    obs = await env.reset(difficulty="hard")
+    async with CortexEnv(base_url="YOUR_HF_SPACE_URL") as env:
+        obs = await env.reset(difficulty="hard")
 
-    result = await env.step(CortexAction(
-        tool_name="inspect_systems",
-        arguments={}
-    ))
-    print(result.observation.last_action_result)
+        result = await env.step(CortexAction(
+            tool_name="inspect_systems",
+            arguments={}
+        ))
+        print(result.observation.last_action_result)
 
-    result = await env.step(CortexAction(
-        tool_name="repair_pipeline",
-        arguments={"pipeline_id": "etl_sales"}
-    ))
-    print(f"Reward: {result.reward}")
-```
+        result = await env.step(CortexAction(
+            tool_name="repair_pipeline",
+            arguments={"pipeline_id": "etl_sales"}
+        ))
+        print(f"Reward: {result.reward}")
 
 ---
 
 ## 🏋️ Training
 
-We train using **GRPO + Unsloth** on `Qwen2.5-1.5B-Instruct`.
+We train using **GRPO + Unsloth** on Qwen2.5-1.5B-Instruct.
 
-▶️ [Open Training Notebook in Colab](YOUR_COLAB_LINK)
+Open Training Notebook in Colab: YOUR_COLAB_LINK
 
 ![Reward Curve](reward_curve.png)
 
@@ -86,6 +95,18 @@ We train using **GRPO + Unsloth** on `Qwen2.5-1.5B-Instruct`.
 
 ## 📁 Project Structure
 
+    openenv-cortex/
+    ├── openenv.yaml
+    ├── pyproject.toml
+    ├── Dockerfile
+    ├── models.py
+    ├── client.py
+    ├── colab_training.py
+    ├── test_local.py
+    └── server/
+        ├── app.py
+        └── cortex_environment.py
+
 ---
 
 ## 🔗 Links
@@ -99,4 +120,4 @@ We train using **GRPO + Unsloth** on `Qwen2.5-1.5B-Instruct`.
 
 ## 👤 Author
 
-Benita Sharon — Built for the OpenEnv 48-Hour Hackathon
+**Benita Sharon** — Built for the OpenEnv 48-Hour Hackathon
