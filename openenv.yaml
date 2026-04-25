@@ -1,0 +1,17 @@
+name: cortex_env
+version: 0.1.0
+description: >
+  CORTEX — Corporate Operations & Real-Time EXecution System.
+  An AI agent acts as an autonomous Chief of Staff inside a simulated corporation,
+  simultaneously managing data crises, HR conflicts, customer escalations,
+  financial audits, CEO briefings, and incident triage — all with cascading
+  consequences and SLA timers. Six interconnected systems, eight reward dimensions.
+author: Benita Sharon
+license: MIT
+tags:
+  - enterprise
+  - multi-domain
+  - cascading-failures
+  - sla
+  - reasoning
+  - planning
