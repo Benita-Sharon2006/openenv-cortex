@@ -120,10 +120,10 @@ Open Training Notebook in Colab: YOUR_COLAB_LINK
 
 ## 🔗 Links
 
-- 🤗 HuggingFace Space: YOUR_HF_SPACE_LINK
+- 🤗 HuggingFace Space: https://huggingface.co/spaces/BenitaSharon/openenv-cortex
 - 📓 Colab Notebook: YOUR_COLAB_LINK
 - 📝 Blog Post: YOUR_BLOG_LINK
-- 💻 GitHub: YOUR_GITHUB_LINK
+- 💻 GitHub: https://github.com/Benita-Sharon2006/openenv-cortex
 
 ---
 
