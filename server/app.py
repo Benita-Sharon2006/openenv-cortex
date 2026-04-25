@@ -1,11 +1,12 @@
 """
 CORTEX server entry point.
-Wires the CortexEnvironment into the OpenEnv FastAPI app.
 """
-import os
+import os, sys
+sys.path.insert(0, "/app")
+
 from openenv.core.env_server.http_server import create_app
-from cortex_env.models import CortexAction, CortexObservation, CortexState
-from .cortex_environment import CortexEnvironment
+from models import CortexAction, CortexObservation, CortexState
+from server.cortex_environment import CortexEnvironment
 
 app = create_app(
     env_class=CortexEnvironment,
