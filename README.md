@@ -1,3 +1,12 @@
+---
+title: CORTEX
+emoji: 🧠
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
 # 🧠 CORTEX — Corporate Operations & Real-Time EXecution System
 
 > An OpenEnv-compliant reinforcement learning environment where an AI agent acts as an autonomous Chief of Staff inside a simulated corporation under crisis.
