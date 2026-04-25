@@ -117,6 +117,10 @@ class CortexEnvironment(Environment):
         self._done = False
         self._last_result = "Episode not started. Call reset first."
 
+    @property
+    def state(self) -> CortexObservation:
+        return self._build_observation()
+        
     def reset(self, seed=None, episode_id=None, **kwargs) -> CortexObservation:
         self._reset_state()
         difficulty = kwargs.get("difficulty", "medium")
